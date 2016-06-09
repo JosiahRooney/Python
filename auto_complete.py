@@ -1,3 +1,7 @@
+ #  Trie: Autocomplete class
+ #  Trie is used to suggest words based on what you are searching for. For instance, if you search for
+ #  "ap", it should display words that start with "ap", such as "ape" or "apple".
+
 class Trie(object):
     def __init__(self):
         self.root = Node('', False)  # create root node
