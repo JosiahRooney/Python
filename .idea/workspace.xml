@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11cf5f11-600f-49d8-bcca-0805c1bd3c66" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/auto_complete.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blackjack.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wormy.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Python.iws" />
@@ -416,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1465399533212</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Wormy &amp; Blackjack&#10;">
+      <created>1465435021870</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1465435021870</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -506,7 +508,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Linked List and others" />
-    <option name="LAST_COMMIT_MESSAGE" value="Linked List and others" />
+    <MESSAGE value="Wormy &amp; Blackjack&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wormy &amp; Blackjack&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
