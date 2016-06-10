@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.main_wrap {
+    width: 1200px;
+    margin: auto;
+}
+
+.top_row {
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+#gold {
+    border: 1px solid;
+    padding: 5px 10px;
+}
+
+.activity {
+    margin-top: 30px;
+    max-height: 200px;
+    overflow: scroll;
+    padding: 10px;
+    position: relative;
+    border: 1px solid;
+}
+
+.activity p {
+    margin: 0;
+    color: #290;
+}
+
+.activity .lost {
+    color: #f30;
+}
+
+.grid_item {
+    width: 24%;
+    display: inline-block;
+    border: 1px solid;
+    padding: 20px;
+    margin-right: 1.33%;
+}
+
+.grid_item:last-child {
+    margin-right: 0;
+}
+
+.grid_item button {
+    border: 0;
+    border-radius: 0;
+    font-size: 1rem;
+    color: white;
+    background-color: #2a0;
+    padding: 8px 20px;
+    display: block;
+    width: 100%;
+}
+
+.grid_item button:disabled {
+    background-color: #aaa;
+}

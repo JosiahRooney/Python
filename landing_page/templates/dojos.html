@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+    <meta charset="UTF-8">
+    <title>Dojos</title>
+
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="main_wrap">
+        <h1>Dojos!</h1>
+        <form action="" method="post">
+            <div class="row">
+                <label>Name: <input type="text"></label>
+            </div>
+            <div class="row">
+                <label>Email: <input type="text"></label>
+            </div>
+            <div class="row">
+                <label>Message: <textarea></textarea></label>
+            </div>
+            <button type="button">Submit</button>
+        </form>
+    </div>
+<script src="{{url_for('static',filename='js/scripts.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+    <meta charset="UTF-8">
+    <title>Ninja Gold</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
+</head>
+<body>
+
+<div class="main_wrap">
+    <div class="row top_row">
+        <h3>Your gold: <span id="gold" data-gold="{{session['gold']}}">{{session['gold']}}</span></h3>
+    </div>
+    <div class="row">
+        <div class="grid_item">
+            <h3>Farm</h3>
+            <p>earns 10-20 gold</p>
+            <form action="/gold" method="post">
+                <input type="hidden" name="gold_amount" value="farm">
+                <button>Harvest Crops!</button>
+            </form>
+        </div><!--
+     --><div class="grid_item">
+            <h3>Cave</h3>
+            <p>earns 5-10 gold</p>
+            <form action="/gold" method="post">
+                <input type="hidden" name="gold_amount" value="cave">
+                <button>Explore Cave!</button>
+            </form>
+        </div><!--
+     --><div class="grid_item">
+            <h3>Forest</h3>
+            <p>earns 2-5 gold</p>
+            <form action="/gold" method="post">
+                <input type="hidden" name="gold_amount" value="forest">
+                <button>Chop Wood!</button>
+            </form>
+        </div><!--
+     --><div class="grid_item">
+            <h3>Casino</h3>
+            <p>earns/takes 50 gold</p>
+            <form action="/gold" method="post">
+                <input type="hidden" name="gold_amount" value="casino">
+                <button id="casino">Bet 50g!</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="activity">
+            {% for row in session['response'] %}
+
+                {% if row[:5] == "You l" %}
+                    <p class="lost">{{row}}</p>
+                {% else %}
+                    <p>{{row}}</p>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+    <script src="{{url_for('static',filename='jquery.js')}}"></script>
+    <script src="{{url_for('static',filename='scripts.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Great Number Game</title>
+</head>
+<body>
+<div class="main_wrap">
+    <h1>Welcome to the Great Number Game</h1>
+    <p>I'm thinking of a number between 1 and 100. See if you can guess:</p>
+
+    {% if session['response'] %}
+        <p>{{session['response']}}</p>
+    {% endif %}
+
+    <form action="/guess" method="post">
+        <input type="text" name="guess">
+        <button type="submit">Guess</button>
+    </form>
+</div>
+</body>
+</html>
