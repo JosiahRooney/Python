@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.main_wrap {
+    width: 800px;
+    margin: auto;
+}
+
+h3 {
+    text-align: center;
+}
+
+.griditem {
+    width: 25%;
+    display: inline-block;
+}
+
+.gridimg {
+    height: 300px;
+}
+
+.griditem img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    border: 0;
+    margin: auto;
+    display: block;
+    color: white;
+    padding: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.leonardo {
+    background-color: #0180c4;
+}
+
+.raphael {
+    background-color: #e13b3e;
+}
+
+.michelangelo {
+    background-color: #ff9d20;
+}
+
+.donatello {
+    background-color: #6f83ba;
+}
+
+.all_ninjas {
+    margin: auto;
+    display: block;
+    background-color: #0a0;
+}
+
+.april {
+    width: 400px;
+    height: auto;
+    margin: auto;
+    display: block;
+}

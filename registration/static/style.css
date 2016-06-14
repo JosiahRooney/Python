@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.main_wrap {
+    max-width: 400px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 13px;
+    border: 0;
+    border-bottom: 1px solid #aaa;
+}
+
+button {
+    border: 0;
+    width: 100%;
+    font-size: 1.4rem;
+    background-color: #0a0;
+    color: white;
+    padding: 12px;
+    margin-top: 30px;
+}
+
+form p {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.error {
+    color: #a00;
+}

@@ -7,8 +7,14 @@
 </head>
 <body>
     <div class="main_wrap">
-        <p>Name: {{name}}</p>
-        <p>Email: {{email}}</p>
+        {% if session['error'] %}
+            <p>{{session['response']}}</p>
+        {% else %}
+            <p>Name: {{session['name']}}</p>
+            <p>Location: {{session['location']}}</p>
+            <p>Language: {{session['language']}}</p>
+            <p>Comments: {{session['comments']}}</p>
+        {% endif %}
     </div>
 </body>
 </html>

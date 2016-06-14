@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <meta charset="UTF-8">
+    <title>Friend</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="main_wrap">
+        <h1>Friends</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="messages">
+                    {% for category, message in messages %}
+                        <p class="{{category}}">{{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% if single_friend %}
+            <h2>Update Friend</h2>
+            <form method="POST" class="input_form" action="/friends/{{single_friend['id']}}/update">
+                <label for="first_name">First Name: <input type="text" name="first_name" id="first_name"></label>
+                <label for="last_name">Last Name: <input type="text" name="last_name" id="last_name"></label>
+                <label for="email">Email: <input type="text" name="email" id="email"></label>
+                <input type="submit" value="Save">
+            </form>
+            <div class="friends">
+                {% for friend in single_friend %}
+                    <h2>{{ friend['name'] }}</h2>
+                    <div class="friend">
+                        <p>First Name: {{ friend['first_name'] }}</p>
+                        <p>Last Name: {{ friend['last_name'] }}</p>
+                        <p>Email: {{ friend['email'] }}</p>
+                        <span class="delete">
+                            <form method="POST" action="/friends/{{ friend['id'] }}/delete">
+                                <input type="submit" title="delete" value="X">
+                            </form>
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

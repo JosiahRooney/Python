@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.main_wrap {
+    width: 400px;
+    margin: auto;
+}
+
+input,
+textarea,
+button,
+select{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input,
+textarea {
+    font-size: 0.9rem;
+    padding: 5px;
+}
+
+textarea {
+    height: 120px;
+}
+
+.error {
+    background-color: rgba(200,0,0,0.8);
+    margin: 0;
+    color: white;
+    margin-bottom: 6px;
+    padding: 4px;
+}
+
+button {
+    background-color: rgba(0,150,0,1);
+    margin: 0;
+    color: white;
+    margin-bottom: 6px;
+    padding: 14px;
+    border: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}

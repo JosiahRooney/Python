@@ -4,30 +4,73 @@
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
     <meta charset="UTF-8">
     <title>Dojo Survey</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
 </head>
 <body>
 <div class="main_wrap">
-    {% if not info %}
-    <form action="/users" method="post">
+    <div>
+        <h2>Dojo Survey</h2>
+        <p>Please enter your information:</p>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/create" method="post">
         <div class="row">
-            <label><input type="text" name="name" placeholder="Name"></label>
+            {% if session['error'] %}
+                <label><input type="text" name="name" placeholder="Name" value="{{session['name']}}"></label>
+            {% else %}
+                <label><input type="text" name="name" placeholder="Name" value=""></label>
+            {% endif %}
         </div>
         <div class="row">
-            <label><input type="text" name="email" placeholder="Email"></label>
+            <label>
+                <select name="location" id="location">
+                    <option value="" selected>Select your location</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Burbank">Burbank</option>
+                    <option value="Seattle">Seattle</option>
+                </select>
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                <select name="language" id="language">
+                    <option value="" selected>Select your favorite language</option>
+                    <option value="Python">Python</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="PHP">PHP</option>
+                </select>
+            </label>
+        </div>
+        <div class="row">
+            {% if session['error'] %}
+                <label><textarea name="comments" placeholder="Comments">{{session['comments']}}</textarea></label>
+            {% else %}
+                <label><textarea name="comments" placeholder="Comments"></textarea></label>
+            {% endif %}
         </div>
         <div class="row">
             <button type="submit">Submit</button>
         </div>
     </form>
+
+    {% if not session['error'] %}
+        <p>Name: {{session['name']}}</p>
+        <p>Location: {{session['location']}}</p>
+        <p>Language: {{session['language']}}</p>
+        <p>Comments: {{session['comments']}}</p>
     {% endif %}
-    {% if info %}
-        <h1>Thank you for your submission!</h1>
-        <h4>Your info:</h4>
-        <p><strong>Name:</strong> {{info.name}}</p>
-        <p><strong>Location:</strong> {{info.location}}</p>
-        <p><strong>Favorite Language:</strong> {{info.language}}</p>
-        <p><strong>Comments:</strong> {{info.comments}}</p>
-    {% endif %}
+
 </div>
+    <script src="{{url_for('static',filename='jquery.js')}}"></script>
+    <script src="{{url_for('static',filename='scripts.js')}}"></script>
 </body>
 </html>

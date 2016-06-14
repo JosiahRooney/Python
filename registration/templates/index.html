@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" type="text/css">
+</head>
+<body>
+<div class="main_wrap">
+    <header>
+        {% if not register %}
+        <h1>Register</h1>
+        {% else %}
+        <h1>Registration Complete</h1>
+        {% endif %}
+    </header>
+    <section>
+        <form action="/process" method="POST">
+            <div class="row">
+                <input name="email" type="text" placeholder="Email">
+                {% with email_error = get_flashed_messages(category_filter=["email_error"]) %}
+                    {% if email_error%}
+                        {% for error in email_error %}
+                            <p class="error">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="row">
+                <input name="first_name" type="text" placeholder="First Name">
+                {% with fname_error = get_flashed_messages(category_filter=["fname_error"]) %}
+                    {% if fname_error%}
+                        {% for error in fname_error %}
+                            <p class="error">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="row">
+                <input name="last_name" type="text" placeholder="Last Name">
+                {% with lname_error = get_flashed_messages(category_filter=["lname_error"]) %}
+                    {% if lname_error%}
+                        {% for error in lname_error %}
+                            <p class="error">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="row">
+                <input name="password" id="pw_inp" type="password" placeholder="Password">
+                {% with pw_error = get_flashed_messages(category_filter=["pw_error"]) %}
+                    {% if pw_error%}
+                        {% for error in pw_error %}
+                            <p class="error">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <p><span id="eight_char">8 char min,</span> <span id="one_upper">1 uppercase,</span> <span id="one_spec">1 special character</span></p>
+            <div class="row">
+                <input name="confirm_password" id="pw_conf" type="password" placeholder="Confirm">
+                {% with conf_error = get_flashed_messages(category_filter=["conf_error"]) %}
+                    {% if conf_error%}
+                        {% for error in conf_error %}
+                            <p class="error">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <p><span id="matches">Matches</span></p>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    {% with errors = get_flashed_messages() %}
+        {% if not errors %}
+            <section>
+                <h4>Your info:</h4>
+                <p>Email: {{session['email']}}</p>
+                <p>First Name: {{session['fname']}}</p>
+                <p>Last Name: {{session['lname']}}</p>
+            </section>
+        {% endif %}
+    {% endwith %}
+</div>
+
+
+<script src="{{url_for('static',filename='jquery.js')}}"></script>
+<script src="{{url_for('static',filename='scripts.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <meta charset="UTF-8">
+    <title>Disappearing Ninja</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" type="text/css">
+</head>
+<body>
+<div class="main_wrap">
+    {% if not all_ninjas and not ninja %}
+        <h3>No ninjas here...</h3>
+    {% endif %}
+    {% if april %}
+        <h3>But here's April:</h3>
+        <img class="april" src="{{url_for('static',filename='img/notapril.jpg')}}">
+    {% endif %}
+    {% if all_ninjas or ninja %}
+        <h3>Teenage Mutant Ninja Turtles!</h3>
+    {% endif %}
+    <div class="griditem">
+    {% if ninja == "leonardo" or all_ninjas %}
+        <h3>Leonardo</h3>
+        <div class="gridimg">
+            <img src="{{url_for('static',filename='img/leonardo.jpg')}}" onclick="document.location='/ninja/leonardo'" alt="">
+        </div>
+        <button class="leonardo" type="button" onclick="document.location='/ninja/leonardo'">Leonardo</button>
+    {% endif %}
+    </div><!--
+ --><div class="griditem">
+    {% if ninja == "raphael" or all_ninjas %}
+        <h3>Raphael</h3>
+        <div class="gridimg">
+            <img src="{{url_for('static',filename='img/raphael.jpg')}}" onclick="document.location='/ninja/raphael'" alt="">
+        </div>
+        <button class="raphael" type="button" onclick="document.location='/ninja/raphael'">Raphael</button>
+    {% endif %}
+    </div><!--
+ --><div class="griditem">
+    {% if ninja == "michelangelo" or all_ninjas %}
+        <h3>Michelangelo</h3>
+        <div class="gridimg">
+            <img src="{{url_for('static',filename='img/michelangelo.jpg')}}" onclick="document.location='/ninja/michelangelo'" alt="">
+        </div>
+        <button class="michelangelo" type="button" onclick="document.location='/ninja/michelangelo'">Michelangelo</button>
+    {% endif %}
+    </div><!--
+ --><div class="griditem">
+    {% if ninja == "donatello" or all_ninjas %}
+        <h3>Donatello</h3>
+        <div class="gridimg">
+            <img src="{{url_for('static',filename='img/donatello.jpg')}}" onclick="document.location='/ninja/donatello'" alt="">
+        </div>
+        <button class="donatello" type="button" onclick="document.location='/ninja/donatello'">Donatello</button>
+    {% endif %}
+    </div>
+
+    <button type="button" class="all_ninjas" onclick="document.location='/ninja'">All Ninjas</button>
+</div>
+<script src="{{url_for('static',filename='jquery.js')}}"></script>
+<script src="{{url_for('static',filename='scripts.js')}}"></script>
+</body>
+</html>

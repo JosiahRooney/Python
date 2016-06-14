@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Helvetica", sans-serif;
+}
+
+.main_wrap {
+    width: 800px;
+    margin: auto;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 20px 0 0;
+}
+
+a {
+    text-decoration: none;
+    color: #f20;
+}
+
+h1,
+h2 {
+    font-weight: 100;
+}
+
+.friend p,
+form {
+    padding: 10px 30px;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 2px solid #333;
+}
+.friend p {
+    margin: 0;
+}
+
+.friend {
+    margin-bottom: 20px;
+}
+
+.success {
+    background-color: rgba(0,160,0,0.9);
+    color: white;
+    padding: 10px;
+}
+
+.error {
+    background-color: rgba(160,0,0,0.8);
+    color: white;
+    padding: 10px;
+}

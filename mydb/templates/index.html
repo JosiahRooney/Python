@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <meta charset="UTF-8">
+    <title>Friend DB</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="main_wrap">
+<ul>
+    <li><a href="/">Home</a></li>
+</ul>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% if friend %}
+        <h1>This is my friend, {{friend['first_name']}}</h1>
+        <div class="friend">
+            <p>ID: {{ friend['id'] }}</p>
+            <p>First Name: {{ friend['first_name'] }}</p>
+            <p>Last Name: {{ friend['last_name'] }}</p>
+            <p>Occupation: {{ friend['occupation'] }}</p>
+        </div>
+    {% endif %}
+    {% if friends %}
+        <h1>These are all my friends!</h1>
+        {% for friend in friends %}
+        <div class="friend">
+            <p>ID: <a href="/friends/{{friend['id']}}">{{ friend['id'] }}</a></p>
+            <p>First Name: <a href="/friends/{{friend['id']}}">{{ friend['first_name'] }}</a></p>
+            <p>Last Name: <a href="/friends/{{friend['id']}}">{{ friend['last_name'] }}</a></p>
+            <p>Occupation: <a href="/friends/{{friend['id']}}">{{ friend['occupation'] }}</a></p>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% if not friend %}
+    <h2>Add a Friend</h2>
+    <form action='/friends/add' method='POST'>
+        <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+        <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+        <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+        <input type="submit" value="Add">
+    </form>
+    {% endif %}
+    {% if friend %}
+    <h2>Update Friend</h2>
+    <form action='/friends/update/{{ friend["id"] }}' method='POST'>
+        <label for="first_name">First Name:<input type="text" name="first_name" value="{{friend['first_name']}}"></label>
+        <label for="last_name">Last Name:<input type="text" name="last_name" value="{{friend['last_name']}}"></label>
+        <label for="occupation">Occupation:<input type="text" name="occupation" value="{{friend['occupation']}}"></label>
+        <input type="submit" value="Save">
+    </form>
+    <h2>Remove Friend</h2>
+    <form action="/friends/remove/{{ friend['id'] }}" method="POST" onsubmit="return confirm('Are you sure you would like to delete {{ friend['first_name'] }}?');">
+        <button type="submit">Remove Friend</button>
+    </form>
+    {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
