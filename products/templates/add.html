@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{category}}">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Add Product</h1>
+    <form action="/add/process/" method="POST">
+        <p><label>Product Name: <input type="text" name="product_name"></label></p>
+        <p><label>Product Price: <input type="text" name="product_price"></label></p>
+        <p><label>Description: <textarea name="product_description"></textarea></label></p>
+        <button type="button" onclick="document.location='/'">Cancel</button>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

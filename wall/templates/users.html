@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Frogo | Users{% endblock %}
+{% block body_class %}users{% endblock %}
+{% block hero_class %}users{% endblock %}
+{% block hero %}
+    {% if users %}
+        {% for user in users %}
+            <div class="user">
+                <div class="user_box">
+                    <div class="user_image">
+                        <a href="/user/{{ user['user_id'] }}"><img src="{{ user['user_image'] }}"></a>
+                    </div>
+                    <div class="username">
+                        <a href="/user/{{ user['user_id'] }}">{{ user['username'] }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

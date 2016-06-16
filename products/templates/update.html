@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{category}}">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Update Product</h1>
+    {% if product %}
+    <form action="/update/{{product['product_id']}}/process/" method="POST">
+        <p><label>Product Name: <input type="text" name="product_name" value="{{product['name']}}"></label></p>
+        <p><label>Product Price: <input type="text" name="product_price" value="{{product['price']}}"></label></p>
+        <p><label>Description: <textarea name="product_description">{{product['description']}}</textarea></label></p>
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+</body>
+</html>

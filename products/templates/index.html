@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{category}}">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Products</h1>
+    <div class="new_product">
+        <button type="button" onclick="document.location='/add/'">Add New Product</button>
+    </div>
+    {% if products %}
+    <div class="products">
+        {% for product in products %}
+            <div class="product">
+                <p>Product Name: {{ product['name'] }}</p>
+                <p>Product Price: {{ '${:,.2f}'.format(product['price']) }}</p>
+                <p>Product Description: {{ product['description'] }}</p>
+                <div>
+                    <a href="/show/{{product['product_id']}}/"><button type="button">Show</button></div>
+                    <a href="/update/{{product['product_id']}}/"><button type="button">Update</button></a>
+                    <a href="/delete/{{product['product_id']}}/"><button type="button">Delete</button></a>
+                </div>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>Nothing found here</p>
+    {% endif %}
+</body>
+</html>
