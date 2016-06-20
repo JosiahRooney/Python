@@ -2,6 +2,18 @@
 {% block title %}Frogo | Posts{% endblock %}
 {% block body_class %}posts{% endblock %}
 {% block hero %}
+    <div class="add_post">
+        <div class="username">
+            Posting as: {{ session['username'] }}
+        </div>
+        <div class="hero">
+            <form action="/posts/add" class="post_form" method="POST">
+                <div><textarea name="post_content" placeholder="Speak your mind"></textarea></div><!--
+             --><div class="align_right bottom_row"><input type="submit" value="Post"></div>
+            </form>
+        </div>
+    </div>
+    <h2>Recent Posts:</h2>
     <div class="posts">
         {% for post in posts %}
             <div class="post" id="post_id_{{ post['post_id'] }}">
@@ -15,7 +27,15 @@
                 </div>
                 <div class="post_content">
                     <p>{{ post['post_content'] }}</p>
-                    <span class="posted_date" title="{{ post['posted_date_readable'] }}">{{ post['posted_date'] }}</span>
+                    <span class="posted_date" title="{{ post['posted_date_readable'] }}">
+                        {{ post['posted_date'] }}
+                    </span>
+                    {% if session['user_logged_in'] and post['post_user_id'] == session['user_id'] or session['user_level'] < 20 %}
+                        <div class="actions">
+                            <a href="/post/{{ post['post_id'] }}/delete/" onclick="return confirm('Are you sure?');">Delete</a>
+                            <a href="/post/{{ post['post_id'] }}/edit/">Edit</a>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="comments_container">
                     {% if post['post_comments'] %}
@@ -35,10 +55,8 @@
                             {% endfor %}
                         </div>
                     {% endif %}
+                    {% if session['user_logged_in'] %}
                     <div class="input_row">
-                        <div class="actions">
-                            <a href="/post/{{ post['post_id'] }}/delete/">Delete</a>
-                        </div>
                         <div class="username">
                             Posting as: <a href="/user/{{session['user_id']}}">{{ session['username'] }}</a>
                         </div>
@@ -47,6 +65,7 @@
                          --><button type="submit"><i class="fa fa-paper-plane send_arrow" aria-hidden="true"></i></button>
                         </form>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

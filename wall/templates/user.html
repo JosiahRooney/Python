@@ -5,6 +5,18 @@
 {% block hero %}
     {% if user %}
         <div class="user">
+            {% if session['user_level'] < 20 and not user['user_id'] == session['user_id'] %}
+                <div class="admin_actions">
+                    <a href="/users">Back to Users</a>
+                    <a href="/user/{{user['user_id']}}/promote/">Make Admin</a>
+                    {% if user['user_banned'] == '0' %}
+                        <a href="/user/{{user['user_id']}}/ban/">Ban</a>
+                    {% endif %}
+                    {% if user['user_banned'] == '1' %}
+                        <a href="/user/{{user['user_id']}}/unban/">Unban</a>
+                    {% endif %}
+                </div>
+            {% endif %}
             <div class="user_image" style="background-image: url({{ user['user_image'] }})"></div>
             <p class="username">{{ user['username'] }}</p>
             {% if user['user_id'] == session['user_id'] %}
@@ -17,7 +29,7 @@
                 <p class="first_name">{{ user['first_name'] }}</p>
                 <p class="last_name">{{ user['first_name'] }}</p>
                 <p class="email">
-                    {% if user['user_id'] == session['user_id'] %}
+                    {% if user['user_id'] == session['user_id'] or session['user_level'] < 20 %}
                         Email: {{ user['email'] }}
                     {% else %}
                         Email: Private

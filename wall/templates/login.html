@@ -4,17 +4,6 @@
 {% block main_wrap_class %}login{% endblock %}
 {% block hero %}
         <h2>Login</h2>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="messages">
-                    {% for category, message in messages%}
-                        {% if category == "error" %}
-                        <p class="{{category}}">{{message}}</p>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
         <form action="/login/process" method="POST">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}

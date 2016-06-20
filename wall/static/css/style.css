@@ -46,6 +46,10 @@ textarea {
     font-family: sans-serif;
 }
 
+body.admin_logged_in {
+    padding-top: 32px;
+}
+
 .input_form {
     padding: 10px 30px;
     background-color: rgba(0,0,0,0.2);
@@ -313,7 +317,7 @@ header h1 img {
 
 .add_post textarea {
     border: 0;
-    background-color: #80CFCD;
+    background-color: #E6F1F0;
     resize: none;
     width: 100%;
     padding: 20px;
@@ -346,8 +350,25 @@ header h1 img {
     margin: auto;
 }
 
+.posts .add_post {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 40px 20px 60px;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 4px;
+}
+
+.posts .add_post .post_form,
+.posts .add_post .username {
+    width: 600px;
+}
+
 .add_post .username {
     margin-bottom: 10px;
+}
+
+.hero {
+    position: relative;
 }
 
 .user .hero {
@@ -363,7 +384,6 @@ header h1 img {
 
 .posts .post {
     margin-bottom: 20px;
-    padding-top: 15px;
     background-color: rgba(0,0,0,0.3);
     border-radius: 4px;
 }
@@ -375,7 +395,7 @@ header h1 img {
 .posts .user_box {
     width: 80px;
     padding-left: 15px;
-    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .posts .comment .user_box {
@@ -404,13 +424,13 @@ header h1 img {
 
 .posts .post_content {
     width: calc(100% - 95px);
-    padding: 30.5px 20px 30.5px 40px;
-    margin-top: -15px;
+    padding: 15px 40px 15px 15px;
     position: relative;
     background-color: rgba(255,255,255,0.9);
     color: #222;
     left: 11px;
     border-top-right-radius: 5px;
+    min-height: 104px;
 }
 
 .posts .post_content .posted_date,
@@ -437,6 +457,7 @@ header h1 img {
     line-height: 1.3;
     letter-spacing: 0.3px;
     color: #333;
+    margin: 0;
 }
 
 .posts .user_image .username {
@@ -591,4 +612,108 @@ header h1 img {
     margin-right: 10px;
     background-size: cover;
     background-position: center;
+}
+
+.actions {
+    text-align: right;
+    margin-top: 3px;
+    position: absolute;
+    bottom: 6px;
+    left: 12px;
+    font-size: 0.7rem;
+}
+
+.actions a {
+    margin-left: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.actions a:first-child {
+    margin-left: 0;
+}
+
+body.users .user {
+    margin-bottom: 6px;
+}
+
+body.users .user a {
+    font-size: 1rem;
+    padding: 0;
+}
+
+body.users .username {
+    font-size: 0;
+}
+
+body.users .hero {
+    padding: 10px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 4px;
+}
+
+body.users .hero a {
+    color: #444;
+}
+
+body.users .hero h2 {
+    padding: 0 10px;
+    margin: 10px 0;
+    color: #0a0
+}
+
+.admin_header {
+    background-color: #444;
+    color: #fff;
+    border-bottom: 4px solid #666;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.admin_header_wrap {
+    width: 900px;
+    margin: auto;
+    padding: 4px 9px;
+}
+
+.admin_header_wrap h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+}
+
+.admin_header_wrap a {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    border-left: 1px solid #777;
+    padding: 3px 8px 1px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+
+.admin_header_wrap a:last-child {
+    border-right: 1px solid #777;
+}
+
+body.user .admin_actions {
+    background-color: rgba(0,0,0,0.8);
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+body.user .admin_actions a {
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 3px 10px;
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Friend</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+	<form action="/friends/new/process" method="POST">
+		<p>
+			<label>First Name: <input type="text" name="first_name"></label>
+		</p>
+		<p>
+			<label>Last Name: <input type="text" name="last_name"></label>
+		</p>
+		<p>
+			<label>Occupation: <input type="text" name="occupation"></label>
+		</p>
+		<p>
+			<label>Known Since: <input type="text" name="known_since"></label>
+		</p>
+		<p><button type="submit">Save</button></p>
+	</form>
+</body>
+</html>
